@@ -7,13 +7,17 @@ import Admin from './components/admin'
 
 
 function App() {
+  
+  //for the modal
   const [show, setShow] = useState(false);
   const handleShow = () => setShow(true);
-  //initializes with saved blog from local storage as 'blogData' 
+  
+  //blogData starts out with the info from the jsx file we imported
+   
   const [blogData, setBlogData] = useState(data) 
  
 const BlogContent = () => {
-  console.log(blogData)
+  //console.log(blogData)
   return (
     <>
     <h1>Blog</h1>
@@ -28,6 +32,7 @@ const BlogContent = () => {
   return (
   <>
   <button onClick={handleShow}>Admin</button>
+  {/* sending a ton of stuff, simplify? */}
   <Admin updateBlog={setBlogData} blogData={blogData} setShow={setShow} show={show}/>
     <BlogContent />
   

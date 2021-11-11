@@ -1,19 +1,21 @@
 import{ Form, Modal } from 'react-bootstrap'
 import { useState, useEffect} from 'react'
 
+//updateBlog is the function, storeData was blogData, setShow and show are for the modal
 const Admin = ({updateBlog, blogData, setShow, show}) => {
 
+  //we use this to keep track of the form input, see handleSubmit
   const [data, setData] = useState({});
  
   
     //set updated blogData to local storage
   useEffect(() => {
-    let storedData = JSON.parse(localStorage.getItem("blogdata"));
-    storedData ? updateBlog(storedData) : localStorage.setItem("blogdata", JSON.stringify(blogData))
+    let blogData = JSON.parse(localStorage.getItem("blogData"));
+    blogData ? updateBlog(blogData) : localStorage.setItem("blogData", JSON.stringify(blogData))
   }, [updateBlog])
 
   useEffect(() => {
-   localStorage.setItem("blogdata", JSON.stringify(blogData))  
+   localStorage.setItem("blogData", JSON.stringify(blogData))  
   }, [blogData])
   
   const updateField = (e) => {
