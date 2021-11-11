@@ -1,5 +1,5 @@
 let content = [
-{author: "steven", 
+{author: "Charles Dickens", 
 title: "Tale of two cities",
 description: "It was the best of times, it was the blurst of times"},
 {author: "Edgar Allen Poe",

@@ -1,8 +1,8 @@
-import{ Form, Modal, Container } from 'react-bootstrap'
+import{ Form, Modal, Container, Button } from 'react-bootstrap'
 import { useState, useEffect} from 'react'
 
 //updateContent is the now the name of the function that updates library, library is still the list plus (eventually) any additions, setShow(function) and show(boolean) are for the modal. content gives us access to the jsx file in order to reset the site to original conditions.
-const Admin = ({updateContent, library, setShow, show, content}) => {
+  const Admin = ({updateContent, library, setShow, show, content}) => {
 
 //we use this to keep track of the form input, see handleSubmit
   const [response, setResponse] = useState({});
@@ -29,60 +29,48 @@ const Admin = ({updateContent, library, setShow, show, content}) => {
       })
   }
 
-
-
+//shutting the modal down
   const handleClose = () => setShow(false);
- // reset the site to original content - not working  
+ 
+// reset the site to original content  
   const resetSite = () => {
-    console.log(content)
+    console.log(content);
     updateContent(content);
+    handleClose();
   }
 
 
 //send updated library content back to app.js
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        handleClose()
-        let updateArr =[
-            {...response}, 
-            ...library];
-            if (response) {
-         updateContent(updateArr) 
-         setResponse({}) //this is to fix adding an empty {} to updateArr on submit
-              }  
-    }
+  const handleSubmit = (e) => {
+      e.preventDefault();
+      handleClose()
+      let updateArr =[
+          {...response}, 
+          ...library];
+          if (response) {
+            updateContent(updateArr) 
+            setResponse({}) //this is to fix adding an empty {} to updateArr on submit
+         }  
+  }
 
-     return (
+      return (
 
-      <Container bg-dark border-3>
-     
-      <Modal show={show} onHide={handleClose}>
-      <Modal.Header closeButton>
-        <Modal.Title>Update Content</Modal.Title>
-      </Modal.Header>
-      <Form onSubmit={handleSubmit}>
-        <Form.Control size="lg" type="text" placeholder="title" name='title' onChange={updateField}/> 
-        <Form.Control size="lg" type="text" placeholder="name" name='name' onChange={updateField}/> 
-        <Form.Control size="lg" type="text" as="textarea" placeholder="description" name="description" aria-label="With textarea" onChange={updateField}/>
-        
+        <Container >
+          <Modal  show={show} onHide={handleClose}>
+            <Modal.Header className="bg-dark" closeButton>
+              <Modal.Title className="text-white">Update Content</Modal.Title>
+            </Modal.Header>
+            <Form className="m-1" >
+              <Form.Control size="lg" className="bg-light" type="text" placeholder="title" name='title' onChange={updateField}/> 
+              <Form.Control size="lg"  type="text" placeholder="author" name='author' onChange={updateField}/> 
+              <Form.Control size="lg"  type="text" as="textarea" placeholder="description" name="description" aria-label="With textarea" onChange={updateField}/>
+              <Button className="bg-dark m-1" onClick={handleSubmit}>Submit</Button>
+              <Button className="bg-dark m-1" onClick={resetSite}>Reset Site</Button>
+            </Form>
+          </Modal>
+        </Container>
+      )
+  }
 
-        <button>Submit</button>
-        <button onClick={resetSite}>Reset Site</button>
-      </Form>
-      <Modal.Footer>
-         
-        </Modal.Footer>
-      </Modal>
-      </Container>
-    )
-}
-
-export default Admin
-
- // <Form.Control size="lg" type="text" placeholder={book[0]}/> 
-            
-            // <Form.Control size="lg" type="text" placeholder={k} name={k} onChange={updateField}/> 
-        
-         
-            // ))
+export default Admin;

@@ -1,11 +1,7 @@
 import content from './components/content' //all the information we had to create
 import { useState} from 'react'
 import Admin from './components/admin'
-
-
-
-
-
+import {Alert, Container, Button, Row , Col} from 'react-bootstrap'
 
 function App() {
   
@@ -17,29 +13,26 @@ function App() {
   //'library' is a category all the elements of the array in content can fit in, but it could be anything. //'recipes', 'blogs', 'teams', you name it. 
  //'blogs' is probably a good choice. 
 
-  const [library, setLibrary] = useState(content) 
- 
-const LibraryContent = () => {
-  //console.log(library)
-  return (
-    <>
-    <h1>library</h1>
-    {library.map((info, i) => (
-      <div key={i}>
-        {info.title}
-      </div>
-    ))}
-    </>
-  )
-}
+  const [library, setLibrary] = useState(content)   
+  
   return (
   <>
-  <button onClick={handleShow}>Admin</button>
-  {/* sending a ton of stuff, simplify? */}
-  <Admin updateContent={setLibrary} library={library} setShow={setShow} show={show} content={content}/>
-    <LibraryContent />
-  
-    
+    <Button side="sm" variant="outline-dark" onClick={handleShow}>Admin</Button>
+    {/* sending a ton of stuff, can I simplify? */}
+    <Admin updateContent={setLibrary} library={library} setShow={setShow} show={show} content={content}/>
+    <Container>
+      <h1>library</h1>
+      {library.map((info, i) => (
+        
+        <Alert variant="dark" key={i}>
+          <Row>
+            <Col>{info.title}</Col>
+            <Col >{info.author}</Col> 
+            <Col >{info.description}</Col> 
+          </Row>
+        </Alert>
+      ))}
+    </Container> 
   </>
   )
 }
