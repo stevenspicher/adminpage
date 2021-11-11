@@ -1,4 +1,4 @@
-import data from './components/data'
+import content from './components/content'
 import { useState} from 'react'
 import Admin from './components/admin'
 
@@ -13,8 +13,8 @@ function App() {
   const handleShow = () => setShow(true);
   
   //blogData starts out with the info from the jsx file we imported
-   
-  const [blogData, setBlogData] = useState(data) 
+
+  const [blogData, setBlogData] = useState(content) 
  
 const BlogContent = () => {
   //console.log(blogData)
@@ -33,7 +33,7 @@ const BlogContent = () => {
   <>
   <button onClick={handleShow}>Admin</button>
   {/* sending a ton of stuff, simplify? */}
-  <Admin updateBlog={setBlogData} blogData={blogData} setShow={setShow} show={show}/>
+  <Admin updateBlog={setBlogData} blogData={blogData} setShow={setShow} show={show} content={content}/>
     <BlogContent />
   
     

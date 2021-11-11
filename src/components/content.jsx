@@ -1,4 +1,4 @@
-let data = [
+let content = [
 {author: "steven", 
 title: "Tale of two cities",
 content: "It was the best of times, it was the blurst of times"},
@@ -17,7 +17,7 @@ content: "monks and sci-fi"
 
 ]
 
-export default data;
+export default content;
 
 
    
