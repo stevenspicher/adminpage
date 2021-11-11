@@ -47,7 +47,10 @@ const Admin = ({updateContent, library, setShow, show, content}) => {
         let updateArr =[
             {...response}, 
             ...library];
-         updateContent(updateArr)   //this is to fix adding an empty {} to updateArr on submit
+            if (response) {
+         updateContent(updateArr) 
+         setResponse({}) //this is to fix adding an empty {} to updateArr on submit
+              }  
     }
 
      return (
