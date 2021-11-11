@@ -64,14 +64,14 @@ const Admin = ({updateContent, library, setShow, show, content}) => {
       <Modal.Header closeButton>
         <Modal.Title >Update Content</Modal.Title>
       </Modal.Header>
-      <Form className="bg-dark" onSubmit={handleSubmit}>
+      <Form className="bg-dark" >
         <Form.Control className="bg-transparent text-white" size="lg" type="text" placeholder="title" name='title' onChange={updateField}/> 
         <Form.Control className="bg-transparent text-white" size="lg" type="text" placeholder="name" name='name' onChange={updateField}/> 
         <Form.Control className="bg-transparent text-white" size="lg" type="text" placeholder="author image" name='authorImage' onChange={updateField}/> 
         <Form.Control className="bg-transparent text-white" size="lg" type="text" as="textarea" placeholder="description" name="description" aria-label="With textarea" onChange={updateField}/>
         
 
-        <Button>Submit</Button>
+        <Button onClick={handleSubmit}>Submit</Button>
         <Button onClick={resetSite}>Reset Site</Button>
       </Form>
       <Modal.Footer>
