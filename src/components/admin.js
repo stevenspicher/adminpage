@@ -50,11 +50,13 @@ const Admin = ({updateContent, library, setShow, show, content}) => {
           console.log(response)
           if (response.title) {   //this is to fix adding an empty {} to updateArr on submit
          updateContent(updateArr)  
-        //  setResponse({}) 
+        setResponse({}) 
           }
          
          
     }
+    
+  
 
      return (
 
@@ -83,10 +85,3 @@ const Admin = ({updateContent, library, setShow, show, content}) => {
 }
 
 export default Admin
-
- // <Form.Control size="lg" type="text" placeholder={book[0]}/> 
-            
-            // <Form.Control size="lg" type="text" placeholder={k} name={k} onChange={updateField}/> 
-        
-         
-            // ))
