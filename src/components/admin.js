@@ -1,4 +1,4 @@
-import{ Form, Modal } from 'react-bootstrap'
+import{ Form, Modal, Container } from 'react-bootstrap'
 import { useState, useEffect} from 'react'
 
 //updateContent is the now the name of the function that updates library, library is still the list plus (eventually) any additions, setShow(function) and show(boolean) are for the modal. content gives us access to the jsx file in order to reset the site to original conditions.
@@ -21,6 +21,7 @@ const Admin = ({updateContent, library, setShow, show, content}) => {
    localStorage.setItem("library", JSON.stringify(library))  
   }, [library])
   
+  //this function takes the form responses and makes them in to a key value pair, then puts it into 'response'
   const updateField = (e) => {
       setResponse({
           ...response,
@@ -28,9 +29,10 @@ const Admin = ({updateContent, library, setShow, show, content}) => {
       })
   }
 
-// reset the site to original content - not working 
+
 
   const handleClose = () => setShow(false);
+ // reset the site to original content - not working  
   const resetSite = () => {
     console.log(content)
     updateContent(content);
@@ -48,21 +50,20 @@ const Admin = ({updateContent, library, setShow, show, content}) => {
          updateContent(updateArr)   //this is to fix adding an empty {} to updateArr on submit
     }
 
+     return (
 
-
-    return (
-
-
+      <Container bg-dark border-3>
+     
       <Modal show={show} onHide={handleClose}>
       <Modal.Header closeButton>
-        <Modal.Title>Modal heading</Modal.Title>
+        <Modal.Title>Update Content</Modal.Title>
       </Modal.Header>
-        <Form onSubmit={handleSubmit} >
-       <Form.Control size="lg" type="text" placeholder="Title" name="title" onChange={updateField}/>
-       <Form.Control type="text" placeholder="Author" name="author" onChange={updateField}/>
-        <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-          <Form.Control as="textarea" placeholder="description" name="description" rows={3} onChange={updateField}/>
-        </Form.Group>
+      <Form onSubmit={handleSubmit}>
+        <Form.Control size="lg" type="text" placeholder="title" name='title' onChange={updateField}/> 
+        <Form.Control size="lg" type="text" placeholder="name" name='name' onChange={updateField}/> 
+        <Form.Control size="lg" type="text" as="textarea" placeholder="description" name="description" aria-label="With textarea" onChange={updateField}/>
+        
+
         <button>Submit</button>
         <button onClick={resetSite}>Reset Site</button>
       </Form>
@@ -70,8 +71,15 @@ const Admin = ({updateContent, library, setShow, show, content}) => {
          
         </Modal.Footer>
       </Modal>
+      </Container>
     )
 }
 
 export default Admin
 
+ // <Form.Control size="lg" type="text" placeholder={book[0]}/> 
+            
+            // <Form.Control size="lg" type="text" placeholder={k} name={k} onChange={updateField}/> 
+        
+         
+            // ))
