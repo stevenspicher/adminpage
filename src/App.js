@@ -1,5 +1,7 @@
-import content from './components/content' //all the information we had to create
 import { useState} from 'react'
+import {Card, Button, CardGroup, Container, Col, Row} from 'react-bootstrap';
+import content from './components/content'; //all the information we had to create
+
 import Admin from './components/admin'
 
 
@@ -22,19 +24,40 @@ function App() {
 const LibraryContent = () => {
   //console.log(library)
   return (
-    <>
-    <h1>library</h1>
+    <Container>
+    <CardGroup>
+    
     {library.map((info, i) => (
-      <div key={i}>
-        {info.title}
-      </div>
+         <Card style={{ width: '18rem', height: '12rem' }}>
+        
+         <Card.Body className="bg-light">
+           <Card.Title>{info.title}</Card.Title>
+           <Card.Text>
+              {info.description}
+           </Card.Text>
+           <Row>
+           <Col xs={4}>
+           <Card.Img variant="top" src={info.authorImage} width="75" height="50" />
+           </Col>
+           <Col>
+           <Card.Text>
+              {info.author}
+           </Card.Text>
+           </Col>
+           </Row>
+         
+           
+         </Card.Body>
+       </Card>
     ))}
-    </>
+
+    </CardGroup>
+    </Container>
   )
 }
   return (
   <>
-  <button onClick={handleShow}>Admin</button>
+  <Button variant="secondary" onClick={handleShow}>Admin</Button>
   {/* sending a ton of stuff, simplify? */}
   <Admin updateContent={setLibrary} library={library} setShow={setShow} show={show} content={content}/>
     <LibraryContent />

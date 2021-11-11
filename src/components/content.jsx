@@ -1,18 +1,22 @@
+import twain from '../assets/twain.jpeg'
+import poe from '../assets/poe.jpeg';
+import stevenson from '../assets/stevenson.jpeg';
 let content = [
-{author: "steven", 
-title: "Tale of two cities",
-description: "It was the best of times, it was the blurst of times"},
+
 {author: "Edgar Allen Poe",
 title: "tell tale heart",
-description: "lub dub lub dub lub dub"
+description: "lub dub lub dub lub dub",
+authorImage: poe
 },
 {author: "Mark Twain",
 title: "Huck Finn",
-description: "rafts and caves and stealing things"
+description: "rafts and caves and stealing things",
+authorImage: twain
 },
-{author: "Neal Stephenson",
-title: "Anathem",
-description: "monks and sci-fi"
+{author: "Robert Louis Stevenson",
+title: "Jungle Book",
+description: "lions and tigers and bears, oh my",
+authorImage: stevenson
 },
 
 ]

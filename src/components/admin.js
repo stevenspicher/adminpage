@@ -1,4 +1,4 @@
-import{ Form, Modal, Container } from 'react-bootstrap'
+import{ Form, Modal, Container, Button } from 'react-bootstrap'
 import { useState, useEffect} from 'react'
 
 //updateContent is the now the name of the function that updates library, library is still the list plus (eventually) any additions, setShow(function) and show(boolean) are for the modal. content gives us access to the jsx file in order to reset the site to original conditions.
@@ -47,7 +47,13 @@ const Admin = ({updateContent, library, setShow, show, content}) => {
         let updateArr =[
             {...response}, 
             ...library];
-         updateContent(updateArr)   //this is to fix adding an empty {} to updateArr on submit
+          console.log(response)
+          if (response.title) {   //this is to fix adding an empty {} to updateArr on submit
+         updateContent(updateArr)  
+        //  setResponse({}) 
+          }
+         
+         
     }
 
      return (
@@ -56,16 +62,17 @@ const Admin = ({updateContent, library, setShow, show, content}) => {
      
       <Modal show={show} onHide={handleClose}>
       <Modal.Header closeButton>
-        <Modal.Title>Update Content</Modal.Title>
+        <Modal.Title >Update Content</Modal.Title>
       </Modal.Header>
-      <Form onSubmit={handleSubmit}>
-        <Form.Control size="lg" type="text" placeholder="title" name='title' onChange={updateField}/> 
-        <Form.Control size="lg" type="text" placeholder="name" name='name' onChange={updateField}/> 
-        <Form.Control size="lg" type="text" as="textarea" placeholder="description" name="description" aria-label="With textarea" onChange={updateField}/>
+      <Form className="bg-dark" onSubmit={handleSubmit}>
+        <Form.Control className="bg-transparent text-white" size="lg" type="text" placeholder="title" name='title' onChange={updateField}/> 
+        <Form.Control className="bg-transparent text-white" size="lg" type="text" placeholder="name" name='name' onChange={updateField}/> 
+        <Form.Control className="bg-transparent text-white" size="lg" type="text" placeholder="author image" name='authorImage' onChange={updateField}/> 
+        <Form.Control className="bg-transparent text-white" size="lg" type="text" as="textarea" placeholder="description" name="description" aria-label="With textarea" onChange={updateField}/>
         
 
-        <button>Submit</button>
-        <button onClick={resetSite}>Reset Site</button>
+        <Button>Submit</Button>
+        <Button onClick={resetSite}>Reset Site</Button>
       </Form>
       <Modal.Footer>
          
