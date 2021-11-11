@@ -25,26 +25,29 @@ const LibraryContent = () => {
   //console.log(library)
   return (
     <Container>
-    <CardGroup>
+    <CardGroup >
     
     {library.map((info, i) => (
-         <Card style={{ width: '18rem', height: '12rem' }}>
+         <Card xs={6} className="bg-dark m-1 " style={{ width: '18rem', height: '15rem' }}>
         
-         <Card.Body className="bg-light">
-           <Card.Title>{info.title}</Card.Title>
-           <Card.Text>
-              {info.description}
-           </Card.Text>
-           <Row>
+         <Card.Body className="bg-light m-1">
+           <Card.Title  >{info.title}</Card.Title>
+           <Row xs={3}>
            <Col xs={4}>
-           <Card.Img variant="top" src={info.authorImage} width="75" height="50" />
+           <Card.Img variant="top" src={info.authorImage} width="20" height="50" />
            </Col>
-           <Col>
+           <Col xs={6}>
            <Card.Text>
               {info.author}
            </Card.Text>
            </Col>
            </Row>
+           <Row>
+           <Card.Text style={{ width: '18rem'}} >
+              {info.description}
+           </Card.Text>
+           </Row>
+
          
            
          </Card.Body>

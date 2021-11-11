@@ -15,7 +15,7 @@ authorImage: twain
 },
 {author: "Robert Louis Stevenson",
 title: "Jungle Book",
-description: "lions and tigers and bears, oh my",
+description: "lions and tigers and bears, oh my. ",
 authorImage: stevenson
 },
 
