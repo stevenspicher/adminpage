@@ -1,6 +1,6 @@
 import { useState} from 'react'
 import {Card, Button, CardGroup, Container, Col, Row} from 'react-bootstrap';
-import content from './components/content'; //all the information we had to create
+import defaultContent from './components/content'; //all the information we had to create
 
 import Admin from './components/admin'
 
@@ -19,7 +19,7 @@ function App() {
   //'library' is a category all the elements of the array in content can fit in, but it could be anything. //'recipes', 'blogs', 'teams', you name it. 
  //'blogs' is probably a good choice. 
 
-  const [library, setLibrary] = useState(content) 
+  const [content, setContent] = useState(defaultContent) 
  
 const LibraryContent = () => {
   //console.log(library)
@@ -27,8 +27,8 @@ const LibraryContent = () => {
     <Container>
     <CardGroup >
     
-    {library.map((info, i) => (
-         <Card xs={6} className="bg-dark m-1 " style={{ width: '18rem', height: '15rem' }}>
+    {content.map((info, i) => (
+         <Card key={i} xs={6} className="bg-dark m-1 " style={{ width: '18rem', height: '15rem' }}>
         
          <Card.Body className="bg-light m-1">
            <Card.Title  >{info.title}</Card.Title>
@@ -62,7 +62,7 @@ const LibraryContent = () => {
   <>
   <Button variant="secondary" onClick={handleShow}>Admin</Button>
   {/* sending a ton of stuff, simplify? */}
-  <Admin updateContent={setLibrary} library={library} setShow={setShow} show={show} content={content}/>
+  <Admin updateContent={setContent} defaultContent={defaultContent} content={content} setShow={setShow} show={show}/>
     <LibraryContent />
   
     
